@@ -1,0 +1,15 @@
+#!/bin/bash
+path="/sys/class/backlight/intel_backlight/actual_brightness"
+path1="/sys/class/backlight/intel_backlight/brightness"
+currentBrightness=$(cat $path)
+
+
+if [ "$currentBrightness" -gt 0 ] ; then
+	echo $currentBrightness > actualBrightness
+	echo 0 > $path1
+else
+	echo `cat actualBrightness` > $path1
+	rm actualBrightness
+fi
+
+

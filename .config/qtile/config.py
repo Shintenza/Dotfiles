@@ -34,6 +34,7 @@ keys = [
 
     # Brightness
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
+    Key([], "XF86ScreenSaver", lazy.spawn("./.scripts/darklight")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 10")),
     Key([mod], "d", lazy.spawn("./.scripts/menu")),
 
