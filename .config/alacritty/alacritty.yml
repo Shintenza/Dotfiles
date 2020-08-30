@@ -91,19 +91,19 @@ window:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Noto Sans Mono
+    family: MesloLGS NF
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
-    family: Noto Sans Mono
+    family: MesloLGS NF
     # Style can be specified to pick a specific face.
     #style: Bold
 
   # The italic font face
   italic:
-    family: Noto Sans Mono
+    family: MesloLGS NF
     # Style can be specified to pick a specific face.
     # style: Italic
   size: 9.0
@@ -159,8 +159,9 @@ font:
 colors:
   # Default colors
   primary:
-    background: "0x141414"
-    foreground: "0xffffff"
+    background: "0x0c0d0e"
+    foreground: "0xb7b8b9"
+
 
     # Bright and dim foreground colors
     #
@@ -180,25 +181,25 @@ colors:
 
   # Normal colors
   normal:
-    black: "0x000000"
-    red: "0xff5555"
-    green: "0x50fa7b"
-    yellow: "0xf1fa8c"
-    blue: "0xbd93f9"
-    magenta: "0xff79c6"
-    cyan: "0x8be9fd"
-    white: "0xbfbfbf"
+    black: "0x0c0d0e"
+    red: "0xe31a1c"
+    green: "0x31a354"
+    yellow: "0xdca060"
+    blue: "0x3182bd"
+    magenta: "0x756bb1"
+    cyan: "0x80b1d3"
+    white: "0xb7b8b9"
 
   # Bright colors
   bright:
-    black: "0x242424"
-    red: "0xff6e67"
-    green: "0x5af78e"
-    yellow: "0xf4f99d"
-    blue: "0xcaa9fa"
-    magenta: "0xff92d0"
-    cyan: "0x9aedfe"
-    white: "0xe6e6e6"
+    black: "0x737475"
+    red: "0xe31a1c"
+    green: "0x31a354"
+    yellow: "0xdca060"
+    blue: "0x3182bd"
+    magenta: "0x756bb1"
+    cyan: "0x80b1d3"
+    white: "0xff3b3b"
 
   # Dim colors
   #
