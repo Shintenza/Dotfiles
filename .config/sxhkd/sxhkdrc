@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-	./.scripts/menu
+	./.scripts/launcher
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -36,6 +36,15 @@ XF86ScreenSaver
 XF86MonBrightnessUp
 	xbacklight -inc 10
 
+XF86AudioPlay 
+	playerctl play-pause
+
+XF86AudioNext 
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
 ############
 # PROGRAMS #
 ############
@@ -48,7 +57,12 @@ super + shift + v
 	code
 super + Print
 	spectacle
-
+super + shift + s
+	spotify
+super + shift + g
+	steam
+super + shift + e
+    emacs
 
 #################
 # BSPWM HOTKEYS #

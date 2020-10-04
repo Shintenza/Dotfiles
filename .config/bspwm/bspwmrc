@@ -43,8 +43,9 @@ bspc config presel_feedback_color	      "#5e81ac"
 bspc config urgent_border_color 	      "#dd2727"
 
 
-bspc rule -a Gimp state=floating follow=off
-bspc rule -a Brave-browser desktop='^2' follow=off
-bspc rule -a discord desktop='^3' follow=off
-bspc rule -a Code desktop='^4' follow=of
-
+bspc rule -a Gimp state=floating
+bspc rule -a Brave-browser desktop='^2'
+bspc rule -a discord desktop='^3'
+bspc rule -a Code desktop='^4'
+bspc rule -a "" desktop='^5'
+bspc rule -a Emacs desktop='4' state=tiled
