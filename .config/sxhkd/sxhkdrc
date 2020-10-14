@@ -4,11 +4,11 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	termite
 
 # program launcher
 super + d
-	./.scripts/launcher
+	./.config/rofi/bin/launcher
 
 # make sxhkd reload its configuration files:
 super + Escape
