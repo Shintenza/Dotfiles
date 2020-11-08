@@ -5,6 +5,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar */
@@ -31,12 +32,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "discord",  NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Code",     NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Spotify",  NULL,       NULL,       1 << 4,       0,           -1 },
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",     NULL,       NULL,           0,         1,         0,0  -1 },
+	{ NULL,       NULL,       "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "Termite",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,0,0           -1 },
+	{ "discord",  NULL,       NULL,       1 << 2,       0,0,0           -1 },
+	{ "Code",     NULL,       NULL,       1 << 3,       0,0,0           -1 },
+	{ "Spotify",  NULL,       NULL,       1 << 4,       0,0,0           -1 },
+	{ "Microsoft Teams - Preview",  NULL,       "Powiadomienie w aplikacji Microsoft Teams",       0,       0,0,0           -1 },
 };
 
 /* layout(s) */
@@ -71,14 +75,14 @@ static const char *termcmd[]  = { "termite", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,             			XK_p, 	   spawn,          SHCMD("./.config/rofi/bin/launcher") },
+	{ MODKEY,             			XK_d, 	   spawn,          SHCMD("./.config/rofi/bin/launcher") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
