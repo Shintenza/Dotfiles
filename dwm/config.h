@@ -1,6 +1,5 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -32,15 +31,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",     NULL,       NULL,           0,         1,         0,0  -1 },
-	{ NULL,       NULL,       "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ "Termite",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,0,0           -1 },
-	{ "discord",  NULL,       NULL,       1 << 2,       0,0,0           -1 },
-	{ "Code",     NULL,       NULL,       1 << 3,       0,0,0           -1 },
-	{ "Spotify",  NULL,       NULL,       1 << 4,       0,0,0           -1 },
-	{ "Microsoft Teams - Preview",  NULL,       "Powiadomienie w aplikacji Microsoft Teams",       0,       0,0,0           -1 },
+	/* class     instance       title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",       NULL,       NULL,               0,          1,          0,          0,          -1 },
+	{ NULL,         NULL,       "Event Tester",     0,          0,          0,          1,          -1 }, /* xev */
+	{ "St",    NULL,       NULL,               0,          0,          1,          0,          -1 },
+	{ "Brave-browser",  NULL,   NULL,          1 << 1,          0,          0,          0,          -1 },
+	{ "discord",    NULL,       NULL,          1 << 2,          0,          0,          0,          -1 },
+	{ "Code",       NULL,       NULL,          1 << 3,          0,          0,          0,          -1 },
+	{ "Spotify",    NULL,       NULL,          1 << 4,          0,          0,          0,          -1 },
+	{ "Microsoft Teams - Preview",         NULL,       "Powiadomienie w aplikacji Microsoft Teams",      0,0,0,0,          -1 },
 };
 
 /* layout(s) */
@@ -69,8 +68,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
-
+static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -122,12 +120,12 @@ static Key keys[] = {
 	{ 0,             				XF86XK_AudioNext,    		spawn,   SHCMD("playerctl next") },
 	{ 0,             				XF86XK_AudioPrev,    		spawn,   SHCMD("playerctl previous") },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,      		SHCMD("brave")},
+	{ MODKEY|ShiftMask,             XK_f,      spawn,      		SHCMD("alacritty -e ranger")},
 	{ MODKEY|ShiftMask,             XK_g,      spawn,      		SHCMD("steam")},
 	{ MODKEY|ShiftMask,             XK_d,      spawn,      		SHCMD("discord")},
 	{ MODKEY|ShiftMask,             XK_s,      spawn,      		SHCMD("spotify")},
 	{ MODKEY|ShiftMask,             XK_v,      spawn,      		SHCMD("code")},
 	{ MODKEY,             			XK_Print,  spawn,           SHCMD("scrot ~/Obrazy/screenshot-$(date +%F_%T).png") },
-
 };
 
 /* button definitions */

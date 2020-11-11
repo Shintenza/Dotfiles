@@ -329,9 +329,12 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon, *lastselmon;
 static Window root, wmcheckwin;
-static xcb_connection_t *xcon;
 
 #include "ipc.h"
+
+static xcb_connection_t *xcon;
+
+
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
@@ -485,10 +488,11 @@ attachaside(Client *c) {
 	if(!at) {
 		attach(c);
 		return;
- 	}
+		}
 	c->next = at->next;
 	at->next = c;
 }
+
 
 void
 attachstack(Client *c)
@@ -794,10 +798,10 @@ destroynotify(XEvent *e)
 
 	if ((c = wintoclient(ev->window)))
 		unmanage(c, 1);
-	else if ((c = swallowingclient(ev->window)))
-		unmanage(c->swallowing, 1);
 	else if ((m = wintomon(ev->window)) && m->barwin == ev->window)
 		unmanagealtbar(ev->window);
+	else if ((c = swallowingclient(ev->window)))
+		unmanage(c->swallowing, 1);
 }
 
 void
@@ -1210,6 +1214,7 @@ manage(Window w, XWindowAttributes *wa)
 	Client *c, *t = NULL, *term = NULL;
 	Window trans = None;
 	XWindowChanges wc;
+
 	c = ecalloc(1, sizeof(Client));
 	c->win = w;
 	c->pid = winpid(w);
@@ -1408,7 +1413,7 @@ movemouse(const Arg *arg)
 	}
 }
 
-Client *
+ Client *
 nexttagged(Client *c) {
 	Client *walked = c->mon->clients;
 	for(;
@@ -2017,7 +2022,7 @@ setupepoll(void)
 		fputs("Failed to initialize IPC\n", stderr);
 	}
 }
-
+ 
 void
 seturgent(Client *c, int urg)
 {
@@ -2378,6 +2383,7 @@ updategeom(void)
 					m->clients = c->next;
 					detachstack(c);
 					c->mon = mons;
+					attach(c);
 					attachaside(c);
 					attachstack(c);
 				}
