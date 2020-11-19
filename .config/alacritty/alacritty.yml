@@ -34,11 +34,11 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 6
+    y: 6
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: true
+  #dynamic_padding: false
 
   # Window decorations
   #
@@ -72,7 +72,6 @@ window:
     # General application class
     general: Alacritty
 
-
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
@@ -83,7 +82,6 @@ scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
   history: 5000
-
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -103,29 +101,92 @@ scrolling:
 
 # Font configuration
 font:
-  # The normal (roman) font face to use.
+  # Normal (roman) font face
   normal:
-    family: MesloLGS NF
-    # Style can be specified to pick a specific face.
-    #style: Regular
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    # family: SauceCodePro Nerd Font
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofur Nerd Font
+    # family: TerminessTTF Nerd Font
+    family: SauceCodePro Nerd Font
 
-  # The bold font face
+    # The `style` can be specified to pick a specific face.
+    style: Regular
+
+  # Bold font face
   bold:
-    family: MesloLGS NF
-    # Style can be specified to pick a specific face.
-    #style: Bold
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofur Nerd Font
+    # family: TerminessTTF Nerd Font
+    family: SauceCodePro Nerd Font
 
-  # The italic font face
+    # The `style` can be specified to pick a specific face.
+    style: Bold
+
+  # Italic font face
   italic:
-    family: MesloLGS NF
-    # Style can be specified to pick a specific face.
-    # style: Italic
-  size: 9.0
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font Mono
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofuritalic Nerd Font Mono
+    # family: TerminessTTF Nerd Font
+    family: SauceCodePro Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font Mono
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofuritalic Nerd Font Mono
+    # family: TerminessTTF Nerd Font
+    family: SauceCodePro Nerd Font
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
+
+  # Point size
+  size: 9
+
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
-  #x: 1
-  #y: 1
+  offset:
+    x: 0
+    y: 1
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
@@ -151,56 +212,75 @@ font:
   #use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night Bright)
 colors:
   # Default colors
-  cursor:
-    text: "0x44475a"
-    cursor: "0xf8f8f2"
-
-  # Default colors
   primary:
-    background: "0x101010"
-    foreground: "0xb9b9b9"
+    background: "0x282c34"
+    foreground: "0xbbc2cf"
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not present.
+    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
+    #dim_foreground: '0x9a9a9a'
+    #bright_foreground: '0xffffff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  #cursor:
+  #  text: '0x000000'
+  #  cursor: '0xffffff'
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area. If selection
+  # background is unset, selection color will be the inverse of the cell colors.
+  # If only text is unset the cell text color will remain the same.
+  selection:
+    text: "0xbbc2cf"
+    background: "0x282c34"
 
   # Normal colors
   normal:
-    black: "0x101010"
-    red: "0x7c7c7c"
-    green: "0x8e8e8e"
-    yellow: "0xa0a0a0"
-    blue: "0x686868"
-    magenta: "0x747474"
-    cyan: "0x868686"
-    white: "0xb9b9b9"
+    black: "0x263640"
+    red: "0xEC7875"
+    green: "0x61C766"
+    yellow: "0xFDD835"
+    blue: "0x42A5F5"
+    magenta: "0xBA68C8"
+    cyan: "0x4DD0E1"
+    white: "0xbfbaac"
 
   # Bright colors
   bright:
-    black: "0x525252"
-    red: "0x7c7c7c"
-    green: "0x8e8e8e"
-    yellow: "0xa0a0a0"
-    blue: "0x686868"
-    magenta: "0x747474"
-    cyan: "0x868686"
-    white: "0xf7f7f7"
+    black: "0x4a697d"
+    red: "0xFB8784"
+    green: "0x70D675"
+    yellow: "0xFFE744"
+    blue: "0x51B4FF"
+    magenta: "0xC979D7"
+    cyan: "0x5CDFF0"
+    white: "0xfdf6e3"
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  dim:
-    black: "0x14151b"
-    red: "0xff2222"
-    green: "0x1ef956"
-    yellow: "0xebf85b"
-    blue: "0x4d5b86"
-    magenta: "0xff46b0"
-    cyan: "0x59dffc"
-    white: "0xe6e6d1"
-
+  #dim:
+  #  black:   '0x000000'
+  #  red:     '0x8c3336'
+  #  green:   '0x7a8530'
+  #  yellow:  '0x97822e'
+  #  blue:    '0x506d8f'
+  #  magenta: '0x80638e'
+  #  cyan:    '0x497e7a'
+  #  white:   '0x9a9a9a'
 
   # Indexed Colors
   #
@@ -242,7 +322,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.90
+background_opacity: 0.85
 # background_opacity: 0.95
 
 #selection:

@@ -22,12 +22,11 @@ FREETYPEINC = /usr/include/freetype2
 # yajl
 YAJLLIBS = -lyajl
 YAJLINC = /usr/include/yajl
-
 #KVMLIB = -lkvm
 
 # includes and libs
-INCS = -I${X11INC} -I${FREETYPEINC} 
-LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} ${YAJLLIBS} -lX11-xcb -lxcb -lxcb-res ${KVMLIB}
+INCS = -I${X11INC} -I${FREETYPEINC} -I${YAJLINC}
+LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} -lX11-xcb -lxcb -lxcb-res ${KVMLIB} ${YAJLLIBS}
 
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}

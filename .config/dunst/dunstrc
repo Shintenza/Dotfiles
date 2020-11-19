@@ -31,6 +31,9 @@ always_run_script = true
 title = Dunst
 class = Dunst
 
+[fullscreen_delay_everything]
+    fullscreen = delay
+
 [shortcuts]
 close = ctrl+shift+space
 close_all = ctrl+shift+space
