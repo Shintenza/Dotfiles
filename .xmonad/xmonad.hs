@@ -9,6 +9,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Fullscreen as F
 
 
 import Graphics.X11.ExtraTypes.XF86
@@ -200,7 +201,7 @@ myStartupHook = do
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
-main = xmonad $ ewmh $docks defaults
+main = xmonad $ ewmh $docks $ fullscreenSupport defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -225,8 +226,8 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayout,
-        manageHook         = myManageHook <+> manageDocks,
-        handleEventHook    = myEventHook <+> fullscreenEventHook,
+        manageHook         = myManageHook <+> manageDocks <+> F.fullscreenManageHook,
+        handleEventHook    = myEventHook <+> F.fullscreenEventHook,
         logHook            = ewmhDesktopsLogHook,
         startupHook        = myStartupHook
 }
