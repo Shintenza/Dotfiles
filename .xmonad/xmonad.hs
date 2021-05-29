@@ -51,7 +51,7 @@ myFocusedBorderColor = "#026edb"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
-    , ((modm,               xK_p     ), spawn "dmenu_run")
+    , ((modm,               xK_d     ), spawn "dmenu_run -h 25 -p 'Run:' -f")
     , ((modm,               xK_q     ), kill)
     , ((modm,               xK_space ), sendMessage NextLayout)
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
@@ -74,7 +74,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
-    , ((modm .|. shiftMask, xK_r     ), spawn "xmonad --recompile; xmonad --restart")
+    , ((modm .|. shiftMask, xK_x     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- My programs
     , ((modm .|. shiftMask, xK_b     ), spawn "brave")
@@ -83,6 +83,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_v     ), spawn "code")
     , ((modm .|. shiftMask, xK_f     ), spawn "alacritty -e ranger")
     , ((modm .|. shiftMask, xK_t     ), spawn "thunar")
+    , ((modm .|. shiftMask, xK_t     ), spawn "thunar")
+    , ((modm .|. shiftMask, xK_Print ), spawn "io.elementary.screenshot-tool")
+    , ((modm,               xK_Print ), spawn "scrot ~/Pictures/screenshot-$(date +%F_%T).png")
 
     -- Multimedia keys
     , ((0, xF86XK_AudioLowerVolume   ), spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%")
