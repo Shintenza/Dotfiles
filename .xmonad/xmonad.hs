@@ -195,7 +195,8 @@ myStartupHook = do
     spawnOnce "setxkbmap pl &"
     spawnOnce "feh --bg-fill ~/Pictures/wallpaper.png &"
     spawnOnce "picom &"
-
+    spawnOnce "redshift -l 50.60705:22.10381 & "
+    spawnOnce "/usr/bin/lxpolkit &"
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
