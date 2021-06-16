@@ -92,7 +92,8 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,             			XK_d, 	   spawn,          SHCMD("./.config/rofi/bin/launcher") },
+	{ MODKEY,             			XK_d, 	   spawn,          SHCMD("dmenu_run -h 25 -p 'Run:' -f") },
+	{ MODKEY,             			XK_p, 	   spawn,          SHCMD("passmenu") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -160,6 +161,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_s,      spawn,      		SHCMD("spotify")},
 	{ MODKEY|ShiftMask,             XK_v,      spawn,      		SHCMD("code")},
 	{ MODKEY,             			XK_Print,  spawn,           SHCMD("scrot ~/Pictures/screenshot-$(date +%F_%T).png") }, 
+	{ MODKEY|ShiftMask,             XK_Print,  spawn,           SHCMD("io.elementary.screenshot-tool") }, 
 };
 
 /* button definitions */
