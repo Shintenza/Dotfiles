@@ -1,0 +1,17 @@
+#!/bin/bash
+
+VOL="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+ICON=""
+
+if [ "${VOL}" -ge 0 ] && [ "${VOL}" -le  30 ]; then
+	ICON=""
+elif [ "${VOL}" -gt 30 ] && [ "${VOL}" -le 60 ]; then
+	ICON=""
+else
+	ICON=""
+fi
+
+
+
+echo "${ICON} ${VOL}%"
+
